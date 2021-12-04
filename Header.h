@@ -230,11 +230,11 @@ int MR(int* num, int len, int var = 2)
 		diff[i] = 0;
 	}
 
-	//считаем р-1
+	//СЃС‡РёС‚Р°РµРј СЂ-1
 	//cout << endl;
 	diff = p_1(num, len, var);
 
-	//разделяем р-1=d*2^{s} и находим d, s
+	//СЂР°Р·РґРµР»СЏРµРј СЂ-1=d*2^{s} Рё РЅР°С…РѕРґРёРј d, s
 	int s = findS(diff, len);
 
 	mpz_class d_num = findD(diff, s, len);
@@ -498,14 +498,14 @@ void Verify(mpz_class M, mpz_class S, mpz_class n, int len)
 	cout << endl << "x = " << x.get_mpz_t() << endl;
 	if (mpz_cmp(M.get_mpz_t(), x.get_mpz_t()) == 0)
 	{
-		cout << endl << "Верификация прошла успешно!" << endl << endl << endl;
+		cout << endl << "Р’РµСЂРёС„РёРєР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!" << endl << endl << endl;
 	}
 }
 
 void ZeroKnowledge()
 {
 	string n;
-	cout << "Возьмите с сайта модуль" << endl;
+	cout << "Р’РѕР·СЊРјРёС‚Рµ СЃ СЃР°Р№С‚Р° РјРѕРґСѓР»СЊ" << endl;
 	cin >> n;
 	int l = n.length() - 1;
 	cout << l << endl;
@@ -521,7 +521,7 @@ void ZeroKnowledge()
 		cout << endl <<  "t = " << hex << t.get_mpz_t() << endl;
 		mpz_class y = (t * t) % nA;
 		cout << "y = " << hex << y.get_mpz_t() << endl << endl;
-		cout << "Возьмите с сайта корень" << endl;
+		cout << "Р’РѕР·СЊРјРёС‚Рµ СЃ СЃР°Р№С‚Р° РєРѕСЂРµРЅСЊ" << endl;
 		cin >> n;
 		bA = mpz_class(n, 16);
 		cout << "z1 = " << bA.get_mpz_t() << endl;
@@ -529,22 +529,22 @@ void ZeroKnowledge()
 		cout << "z2 = " << bB.get_mpz_t() << endl << endl;
 		if (mpz_cmp(t.get_mpz_t(), bA.get_mpz_t()) != 0 && mpz_cmp(t.get_mpz_t(), bB.get_mpz_t()) != 0)
 		{
-			cout << endl  << "Мы можем разложить n!" << endl;
+			cout << endl  << "РњС‹ РјРѕР¶РµРј СЂР°Р·Р»РѕР¶РёС‚СЊ n!" << endl;
 			bA = (t + bA) % nA;
 			mpz_gcd(pA.get_mpz_t(), bA.get_mpz_t(), nA.get_mpz_t());
 			cout << "p = " << pA.get_mpz_t() << endl;
 			mpz_divexact(qA.get_mpz_t(), nA.get_mpz_t(), pA.get_mpz_t());
 			cout << "q = " << qA.get_mpz_t() << endl;
-			cout << endl << "Проверка" << endl;
+			cout << endl << "РџСЂРѕРІРµСЂРєР°" << endl;
 			bB = pA * qA;
 			cout << "n = " << bB.get_mpz_t() << endl;
 			if (mpz_cmp(nA.get_mpz_t(), bB.get_mpz_t()) == 0)
 			{
-				cout << endl << "Проверка пройдена успешно!" << endl << endl;
+				cout << endl << "РџСЂРѕРІРµСЂРєР° РїСЂРѕР№РґРµРЅР° СѓСЃРїРµС€РЅРѕ!" << endl << endl;
 			}
 			stopper = 1;
 		}
 		coun++;
 	}
-	cout << "Потребовалось " << coun << " попыток" << endl;
+	cout << "РџРѕС‚СЂРµР±РѕРІР°Р»РѕСЃСЊ " << coun << " РїРѕРїС‹С‚РѕРє" << endl;
 }
